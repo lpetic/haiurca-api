@@ -45,6 +45,11 @@ class Travel
      */
     private $back;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +99,18 @@ class Travel
     public function setBack(?\DateTimeInterface $back): self
     {
         $this->back = $back;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?int $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }
