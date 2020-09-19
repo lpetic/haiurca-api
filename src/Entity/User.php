@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Entity\Traits\TimeTrait;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -44,6 +46,21 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Travel::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $travels;
+
+    public function __construct()
+    {
+        $this->travels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -131,6 +148,49 @@ class User implements UserInterface
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Travel[]
+     */
+    public function getTravels(): Collection
+    {
+        return $this->travels;
+    }
+
+    public function addTravel(Travel $travel): self
+    {
+        if (!$this->travels->contains($travel)) {
+            $this->travels[] = $travel;
+            $travel->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTravel(Travel $travel): self
+    {
+        if ($this->travels->contains($travel)) {
+            $this->travels->removeElement($travel);
+            // set the owning side to null (unless already changed)
+            if ($travel->getUser() === $this) {
+                $travel->setUser(null);
+            }
+        }
 
         return $this;
     }
