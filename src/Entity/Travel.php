@@ -2,62 +2,74 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Traits\TimeTrait;
-use App\Repository\TravelRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass=TravelRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\TravelRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="travels")
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"travel"}},
+ *     "denormalizationContext"={"groups"={"travel"}}
+ * })
  */
 class Travel
 {
     use TimeTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"travel", "user"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=City::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"travel", "user"})
      */
     private $origin;
 
     /**
      * @ORM\ManyToOne(targetEntity=City::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"travel", "user"})
      */
     private $destination;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"travel", "user"})
      */
     private $go;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"travel", "user"})
      */
     private $back;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"travel", "user"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Groups({"travel", "user"})
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="travels")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"travel"})
      */
     private $user;
 

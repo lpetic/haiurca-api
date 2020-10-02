@@ -2,35 +2,40 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Entity\Traits\TimeTrait;
-use App\Repository\CityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass=CityRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\CityRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="cities")
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"city"}},
+ *     "denormalizationContext"={"groups"={"city"}}
+ * })
  */
 class City
 {
-    use TimeTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"city", "travel", "user", "country"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"city", "travel", "user", "country"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="cities")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"city", "travel", "user"})
      */
     private $country;
 

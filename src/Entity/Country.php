@@ -2,36 +2,41 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Entity\Traits\TimeTrait;
-use App\Repository\CountryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass=CountryRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\CountryRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="countries")
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"country"}},
+ *     "denormalizationContext"={"groups"={"country"}}
+ * })
  */
 class Country
 {
-    use TimeTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"country", "travel", "user", "city"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"country", "travel", "user", "city"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=City::class, mappedBy="country", orphanRemoval=true)
+     * @Groups({"country"})
      */
     private $cities;
 

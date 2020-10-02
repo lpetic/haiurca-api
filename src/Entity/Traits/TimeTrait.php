@@ -12,11 +12,13 @@ trait TimeTrait
 {
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"city", "country", "travel", "user"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"city", "country", "travel", "user"})
      */
     private $updatedAt;
 
