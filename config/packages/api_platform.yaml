@@ -11,3 +11,9 @@ api_platform:
             apiKey:
                 name: Authorization
                 type: header
+    collection:
+        pagination:
+            items_per_page: 100 #TODO correct this
+
+    title: 'HaiUrca API'
+    description: 'API'

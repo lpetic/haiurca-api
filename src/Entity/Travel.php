@@ -6,15 +6,23 @@ use App\Entity\Traits\TimeTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TravelRepository")
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="travels")
- * @ApiResource(attributes={
+ * @ApiResource(
+ *     shortName="travels",
+ *     attributes={
  *     "normalization_context"={"groups"={"travel"}},
  *     "denormalizationContext"={"groups"={"travel"}}
  * })
+ * @ApiFilter(SearchFilter::class, properties={"origin.id": "exact", "destination.id": "exact"})
+ * @ApiFilter(DateFilter::class, properties={"go"})
  */
 class Travel
 {
