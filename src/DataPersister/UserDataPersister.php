@@ -25,6 +25,7 @@ class UserDataPersister implements DataPersisterInterface{
 
     public function persist($data)
     {
+        $data->setRoles($data->getRoles());
         $data->setPassword(
             $this->passwordEncoder->encodePassword(
                 $data, $data->getPassword()

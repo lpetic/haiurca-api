@@ -19,7 +19,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
  *     shortName="travels",
  *     attributes={
  *     "normalization_context"={"groups"={"travel"}},
- *     "denormalizationContext"={"groups"={"travel"}}
+ *     "denormalization_context"={"groups"={"travel"}}
  * })
  * @ApiFilter(SearchFilter::class, properties={"origin.id": "exact", "destination.id": "exact"})
  * @ApiFilter(DateFilter::class, properties={"go"})

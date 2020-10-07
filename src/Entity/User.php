@@ -17,7 +17,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Table(name="users")
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"user"}},
- *     "denormalizationContext"={"groups"={"user"}}
+ *     "denormalization_context"={"groups"={"user"}}
  *     })
  */
 class User implements UserInterface

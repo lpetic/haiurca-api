@@ -12,7 +12,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Table(name="cities")
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"city"}},
- *     "denormalizationContext"={"groups"={"city"}}
+ *     "denormalization_context"={"groups"={"city"}}
  * })
  */
 class City

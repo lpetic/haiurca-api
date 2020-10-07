@@ -14,7 +14,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\Table(name="countries")
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"country"}},
- *     "denormalizationContext"={"groups"={"country"}}
+ *     "denormalization_context"={"groups"={"country"}}
  * })
  */
 class Country
