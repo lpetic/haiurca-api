@@ -15,14 +15,5 @@ api_platform:
         pagination:
             items_per_page: 100 #TODO correct this
 
-    http_cache:
-        invalidation:
-        enabled: true
-        max_age: 0
-        varnish_urls: ['%env(VARNISH_URL)%']
-        shared_max_age: 3600
-        vary: ['Content-Type', 'Authorization', 'Origin']
-        public: true
-
     title: 'HaiUrca API'
     description: 'API'
