@@ -1,5 +1,5 @@
 deploy:
-	git push origin main
+	git push heroku main
 	heroku run make
 
 install-heroku:
