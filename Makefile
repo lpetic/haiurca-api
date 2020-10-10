@@ -1,8 +1,8 @@
 deploy:
 	git push heroku main
-	heroku run make
+	heroku run make install
 
-install-heroku:
+install:
 	rm -rf var vendor
 	rm config/bundles.php
 	mv config/bundles2.php config/bundles.php
