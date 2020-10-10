@@ -14,10 +14,9 @@
     }
   ],
   "scripts": {
-    "compile": [
-      "echo here +++++++++++++++++++++++++",
-      "rm web/app_dev.php"
-    ],
-    "postdeploy": "php bin/console doctrine:schema:create"
+    "postdeploy": [
+      "echo +++++++++++++++++++",
+      "php bin/console doctrine:schema:create"
+    ]
   }
 }
