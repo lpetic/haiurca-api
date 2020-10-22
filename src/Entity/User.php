@@ -16,6 +16,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="users")
  * @ApiResource(attributes={
+ *     "security"="is_granted('ROLE_USER')",
  *     "normalization_context"={"groups"={"user"}},
  *     "denormalization_context"={"groups"={"user"}}
  *     })

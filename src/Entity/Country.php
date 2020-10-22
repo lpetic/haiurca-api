@@ -13,6 +13,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="countries")
  * @ApiResource(attributes={
+ *     "security"="is_granted('ROLE_USER')",
  *     "normalization_context"={"groups"={"country"}},
  *     "denormalization_context"={"groups"={"country"}}
  * })

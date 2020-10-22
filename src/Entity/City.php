@@ -11,6 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="cities")
  * @ApiResource(attributes={
+ *     "security"="is_granted('ROLE_USER')",
  *     "normalization_context"={"groups"={"city"}},
  *     "denormalization_context"={"groups"={"city"}}
  * })

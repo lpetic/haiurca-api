@@ -18,6 +18,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
  * @ApiResource(
  *     shortName="travels",
  *     attributes={
+ *     "security"="is_granted('ROLE_USER')",
  *     "normalization_context"={"groups"={"travel"}},
  *     "denormalization_context"={"groups"={"travel"}}
  * })
