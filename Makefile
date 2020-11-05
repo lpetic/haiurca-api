@@ -1,3 +1,7 @@
+deploy:
+	git push heroku HEAD:main
+	heroku run make install
+
 install:
 	composer install
 	make fixtures
