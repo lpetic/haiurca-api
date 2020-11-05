@@ -10,6 +10,8 @@
         "laminas/laminas-code": "^3.4",
         "laminas/laminas-eventmanager": "^3.3",
         "lexik/jwt-authentication-bundle": "^2.8",
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "fzaninotto/faker": "^1.9",
         "symfony/apache-pack": "^1.0",
         "symfony/console": "5.1.*",
         "symfony/dotenv": "5.1.*",
@@ -20,10 +22,6 @@
         "symfony/swiftmailer-bundle": "^3.5",
         "symfony/yaml": "5.1.*",
         "symfonycasts/reset-password-bundle": "^1.1"
-    },
-    "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
-        "fzaninotto/faker": "^1.9"
     },
     "config": {
         "optimize-autoloader": true,
