@@ -31,6 +31,10 @@ class Kernel extends BaseKernel
 
         if (is_file(\dirname(__DIR__).'/config/routes.yaml')) {
             $routes->import('../config/{routes}.yaml');
+            // Allow routes.php for static pages !
+            if (is_file($path = \dirname(__DIR__).'/config/routes.php')) {
+                $routes->import('../config/{routes}.php');
+            }
         } elseif (is_file($path = \dirname(__DIR__).'/config/routes.php')) {
             (require $path)($routes->withPath($path), $this);
         }
