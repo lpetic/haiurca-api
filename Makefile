@@ -14,5 +14,6 @@ fixtures:
 jwt:
 	chmod -R 777 config/
 	mkdir -p config/jwt
-	openssl genrsa -out config/jwt/private.pem 4096
-	openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+	jwt_passphrase=${JWT_PASSPHRASE:-$(grep ''^JWT_PASSPHRASE='' .env | cut -f 2 -d ''='')}
+	echo "$jwt_passphrase" | openssl genrsa -out config/jwt/private.pem 4096
+	echo "$jwt_passphrase" | openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
