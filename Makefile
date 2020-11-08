@@ -11,7 +11,7 @@ fixtures:
 	php bin/console doctrine:migrations:migrate
 	php bin/console doctrine:fixtures:load
 
-jwt2:
+jwt:
 	chmod -R 777 config/
 	mkdir -p config/jwt
 	jwt_passphrase=${JWT_PASSPHRASE:-$(grep ''^JWT_PASSPHRASE='' .env | cut -f 2 -d ''='')}
