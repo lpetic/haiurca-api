@@ -12,7 +12,7 @@ class UserFixtures extends Fixture
 {
     private $encoder;
 
-    private static $numberUsers = 10;
+    private static $numberUsers = 5;
     private static $defaultPassword = '123123';
     private static $defaultRole = ['ROLE_USER'];
     private static $adminRole = ['ROLE_ADMIN'];
@@ -26,9 +26,9 @@ class UserFixtures extends Fixture
     {
         $this->createAdmin($manager);
         $faker = Faker\Factory::create('ro_RO');
-        /*for($i = 0; $i < self::$numberUsers; $i++){
+        for($i = 0; $i < self::$numberUsers; $i++){
             $this->createUser($faker, $manager);
-        }*/
+        }
         $manager->flush();
     }
 
