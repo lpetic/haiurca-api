@@ -59,7 +59,8 @@
         },
         "post-install-cmd": [
             "@auto-scripts",
-            "make jwt"
+            "make jwt",
+            "make fixtures"
         ],
         "post-update-cmd": [
             "@auto-scripts"
