@@ -15,5 +15,4 @@ api_platform:
         pagination:
             items_per_page: 100 #TODO correct this
 
-    title: 'HaiUrca API'
-    description: 'API'
+    show_webby: false
